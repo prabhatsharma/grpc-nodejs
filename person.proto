@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package person;
+
+message Persons {
+    repeated Person persons = 1;
+}
+
+message Person {
+    int32 uid = 1;
+    string firstname = 2;
+    string lastname = 3;
+}
+
+
+message PersonRequest {
+    int32 uid = 1;
+}
+
+message PersonsRequest {}
+
+service PersonService {
+    rpc getPersonById(PersonRequest) returns (Person);
+    rpc getPersons(PersonsRequest) returns (Persons);
+}
